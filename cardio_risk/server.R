@@ -1,3 +1,22 @@
+##Assignment for Coursera Developing Data Products
+##Project: Cardiovascular Risk Prediction
+##Shiny App Server Script
+
+##Cardio.risk function generates a probability for a a cardiovascular event in the following ten years.
+##
+
+##Functions arguments are as follows:
+##age0 is age
+##gender is the gender
+##ethnicity is ethnicity or race
+##smoke0 is for smoking of tobacco products
+##diabetes0 is for diabetes
+##bprx is for blood pressure medication
+##sbp is for systolic blood pressure
+##tchol0 is for total cholesterol
+##hdl0 is for HDL cholesterol
+##
+
 cardio.risk <- function (age0 = 0, gender = "", ethnicity = "", smoke0 = 0, 
           diabetes0 = 0, bprx = 0, sbp = 0, tchol0 = 0, hdl0 = 0) 
   
@@ -167,19 +186,17 @@ cardio.risk <- function (age0 = 0, gender = "", ethnicity = "", smoke0 = 0,
   
 
 
+##
+##Shiny server responds to inputs from the Shiny ui script to call the cardio.risk function
+##
+
 shinyServer(
   function(input, output) {
-    output$inputValue1 <- renderPrint({input$age})
-    output$inputValue2 <- renderPrint({input$sex})
-    output$inputValue3 <- renderPrint({input$race})
-    output$inputValue4 <- renderPrint({input$smoke})
-    output$inputValue5 <- renderPrint({input$systolic})
     output$prediction <- renderPrint({cardio.risk(age0 = input$age, 
                                                   gender = as.character(input$sex), 
                                                   ethnicity =  as.character(input$race), 
                                                   smoke0 = as.numeric(input$smoke), 
                                                   diabetes0 = as.numeric(input$diabetes), 
- #                                                 bprx = as.numeric(input$rx1), 
                                                   sbp = input$systolic, 
                                                   tchol0 =  input$cholesterol, 
                                                   hdl0 = input$hdl

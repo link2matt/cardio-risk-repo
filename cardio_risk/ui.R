@@ -1,5 +1,7 @@
-## Assignment Developing Data Products
-## Cardio Vascular Risk
+##Assignment for Coursera Developing Data Products
+##Project: Cardiovascular Risk Prediction
+##Shiny App ui Script
+
 
 shinyUI(
   pageWithSidebar(
@@ -16,14 +18,10 @@ shinyUI(
       checkboxInput(inputId = "diabetes",
                     label = strong("Diabetic"),
                     value = FALSE),
-      
-#      selectInput('smoke', label = "Smoke", choices = c(0,1)),
-#      selectInput('diabetes', label = "Diabetes", choices = c(0,1)),
-#      selectInput('rx1', label = "Blood Pressure Medicine", choices = c("Yes", "No")),
+    
       sliderInput('systolic', label = "Systolic Blood Pressure", 100, min = 70, max=200, step = 1),
       sliderInput('cholesterol', label = "Total Cholesterol", 150, min = 1, max=400, step = 1),   
       sliderInput('hdl', label = "HDL Cholesterol", 40, min = 1, max=100, step = 1)
-#      submitButton('Submit')
     ),
     mainPanel(
       h3("Prediction Calculation"),
